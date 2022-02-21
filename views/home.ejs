@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Recipe Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="title-container">
+    <h1 id="title">What's for <span id="cycle"></span></h1>
+  </div>
+
+  <div class="middle-container">
+    <form class="" action="/" method="post" autocomplete="off">
+      <input type="text" name="ingredient" value="">
+      <button type="submit" name="button">Add</button>
+    </form>
+    <form class="" action="/delete" method="post">
+      <% ingredients.forEach(ingredient => { %>
+        <input type="checkbox" name="checkbox" value="<%= ingredient %>" onChange="this.form.submit()">
+        <p> <%= ingredient %> </p>
+      <% }) %>
+    </form>
+    <form class="" action="/recipies" method="post">
+      <button type="submit" name="button">Find my Recipe</button>
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    const textList = ["Breakfeast?", "Lunch?", "Dinner?"]
+    const cycle = document.querySelector("#cycle");
+    let i = 0;
+    function cycleText() {
+      cycle.innerHTML = textList[i];
+      i = ++i % textList.length;
+    };
+    cycleText();
+    setInterval(cycleText, 1500);
+    console.log(textList.length);
+  </script>
+</body>
+
+</html>
+
+<!-- for(let x = 0; x < ingredients.length; x++){  -->
